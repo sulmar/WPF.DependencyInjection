@@ -23,13 +23,9 @@ namespace WPF.DependencyInjection.ViewModels
 
         public ViewModelLocator()
         {
-            container = new UnityContainer();
-            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
-
+            container = new UnityContainer();            
             container.RegisterType<CustomersViewModel>(_mainWindowLifetimeManager);
-
             container.RegisterType<ICustomersService, CustomersService>();
-
             container.RegisterType<IFrameNavigationService, FrameNavigationService>();
 
             //container.RegisterTypes(
@@ -37,11 +33,23 @@ namespace WPF.DependencyInjection.ViewModels
             //       WithMappings.FromMatchingInterface,
             //       WithName.Default);
 
+            // ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
+
         }
 
+
+        // ServiceLocator jest abstrakcją do wstrzykiwania. 
+        // Izoluje nas od konkretnej implementacji DI
+
+        // Wstrzykiwanie poprzez ServiceLocator
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
         public CustomersViewModel CustomersViewModel => ServiceLocator.Current.GetInstance<CustomersViewModel>();
         public Page1ViewModel Page1ViewModel => ServiceLocator.Current.GetInstance<Page1ViewModel>();
+
+        // Wstrzykiwanie za pomocą Unity
+        //public ShellViewModel ShellViewModel => container.Resolve<ShellViewModel>();
+        //public CustomersViewModel CustomersViewModel => container.Resolve<CustomersViewModel>();
+        //public Page1ViewModel Page1ViewModel => container.Resolve<Page1ViewModel>();
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace WPF.DependencyInjection.Fakers
             RuleFor(p => p.Email, f => f.Internet.Email());
             RuleFor(p => p.IsDeleted, f => f.Random.Bool(0.8f));
             FinishWith((f, customer)
-                => Console.WriteLine($"Created {customer.FirstName} {customer.LastName} {customer.Email}"));
+                => Debug.WriteLine($"Created {customer.FirstName} {customer.LastName} {customer.Email}"));
 
         }
     }

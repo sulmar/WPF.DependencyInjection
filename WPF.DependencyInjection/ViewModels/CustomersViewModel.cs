@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using WPF.DependencyInjection.Commands;
 using WPF.DependencyInjection.IServices;
 using WPF.DependencyInjection.Models;
 
@@ -16,14 +18,27 @@ namespace WPF.DependencyInjection.ViewModels
         {
             this.customersService = customersService;
 
-            Load();
         }
+
+        private ICommand _loadedCommand;
+
+        public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(_ => Load()));
 
         private void Load()
         {
             Customers = customersService.Get();
         }
 
-        public IList<Customer>  Customers { get; set; }
+        
+        private IList<Customer> _customers;
+
+        public IList<Customer> Customers
+        {
+            get { return _customers; }
+            set { _customers = value;
+                OnPropertyChanged();
+
+            }
+        }
     }
 }
