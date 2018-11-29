@@ -13,8 +13,6 @@ namespace WPF.DependencyInjection.Common
     {
         public object Parameter { get; private set; }
 
-   //     private Frame frame;
-
         public FrameNavigationService()
         {
            
@@ -46,6 +44,8 @@ namespace WPF.DependencyInjection.Common
 
         private static Frame GetFrame()
         {
+            // return GetDescendantFromName(Application.Current.MainWindow, "MainFrame") as Frame;
+
             return RecurseChildren<Frame>(Application.Current.MainWindow).FirstOrDefault(f=>f.Name== "MainFrame");
         }
 
@@ -71,7 +71,37 @@ namespace WPF.DependencyInjection.Common
             }
         }
 
-       
+
+        private static FrameworkElement GetDescendantFromName(DependencyObject parent, string name)
+        {
+            var count = VisualTreeHelper.GetChildrenCount(parent);
+
+            if (count < 1)
+            {
+                return null;
+            }
+
+            for (var i = 0; i < count; i++)
+            {
+                var frameworkElement = VisualTreeHelper.GetChild(parent, i) as FrameworkElement;
+                if (frameworkElement != null)
+                {
+                    if (frameworkElement.Name == name)
+                    {
+                        return frameworkElement;
+                    }
+
+                    frameworkElement = GetDescendantFromName(frameworkElement, name);
+                    if (frameworkElement != null)
+                    {
+                        return frameworkElement;
+                    }
+                }
+            }
+            return null;
+        }
+
+
 
     }
 }

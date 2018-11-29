@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF.DependencyInjection.Commands;
 using WPF.DependencyInjection.Common;
+using WPF.DependencyInjection.ViewModels;
 
 namespace WPF.DependencyInjection.ViewModels
 {
-    public class ShellViewModel : ViewModelBase
+    public class Page1ViewModel : ViewModelBase
     {
         private readonly IFrameNavigationService navigationService;
 
-        public ShellViewModel(IFrameNavigationService navigationService)
+        public Page1ViewModel(IFrameNavigationService navigationService)
         {
             this.navigationService = navigationService;
         }
 
-        private ICommand _loadedCommand;
+        private ICommand _ShowCustomersCommand;
 
-        public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(p => navigationService.Navigate("Page1")));
+        public ICommand ShowCustomersCommand => _ShowCustomersCommand ?? (_ShowCustomersCommand = new RelayCommand(p => navigationService.Navigate("Customers")));
     }
 }
