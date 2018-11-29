@@ -1,5 +1,9 @@
 # Wstrzykiwanie zależności w aplikacji WPF MVVM
 
+
+- Porównanie wstrzykiwania zależności za pomocą Unity, AutoFac i ServiceLocator
+- Nawigacja pomiędzy oknami za pomocą NavigationService
+
 # Biblioteki 
 
 - Bogus 
@@ -7,6 +11,6 @@
 - CommonServiceLocator
 - System.Windows.Interactivity.WPF
 
-#
+
 
 
