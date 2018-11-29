@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF.DependencyInjection.Commands;
 using WPF.DependencyInjection.Common;
+using WPF.DependencyInjection.Models;
 using WPF.DependencyInjection.ViewModels;
 
 namespace WPF.DependencyInjection.ViewModels
@@ -14,9 +15,13 @@ namespace WPF.DependencyInjection.ViewModels
     {
         private readonly IFrameNavigationService navigationService;
 
+        public Customer Customer { get; set; }
+
         public Page1ViewModel(IFrameNavigationService navigationService)
         {
             this.navigationService = navigationService;
+
+            Customer = navigationService.Parameter as Customer;
         }
 
         private ICommand _ShowCustomersCommand;

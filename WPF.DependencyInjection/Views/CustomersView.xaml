@@ -19,9 +19,17 @@
     
     <Grid>
 
+        <StackPanel>
+
+
+        <Button Command="{Binding ShowPage1Command}" Content="Show Page1" />
+
         <ListBox ItemsSource="{Binding Customers}"
                  ItemTemplate="{StaticResource CustomerTemplate}"
+                 SelectedItem="{Binding SelectedCustomer}"
                  />
+
+        </StackPanel>
 
     </Grid>
 </Page>

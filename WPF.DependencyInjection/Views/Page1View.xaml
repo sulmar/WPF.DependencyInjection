@@ -11,10 +11,11 @@
 
     <Grid>
 
-        <DockPanel>
+        <StackPanel>
             <Button Command="{Binding ShowCustomersCommand}" Content="Show Customers" DockPanel.Dock="Top" />
+            <TextBox Text="{Binding Customer.FirstName}" />
+            <TextBox Text="{Binding Customer.LastName}" />
             
-            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Page 1</Label>
-        </DockPanel>
+        </StackPanel>
     </Grid>
 </Page>

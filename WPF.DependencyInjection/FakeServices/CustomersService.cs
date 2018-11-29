@@ -13,10 +13,13 @@ namespace WPF.DependencyInjection.FakeServices
     {
         CustomerFaker customerFaker = new CustomerFaker();
 
-        public IList<Customer> Get()
+        IList<Customer> customers;
+
+        public CustomersService()
         {
-            return customerFaker.Generate(100);
-            
+            customers = customerFaker.Generate(100);
         }
+
+        public IList<Customer> Get() => customers;
     }
 }

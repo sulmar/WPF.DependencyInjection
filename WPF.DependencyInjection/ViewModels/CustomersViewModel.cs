@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF.DependencyInjection.Commands;
+using WPF.DependencyInjection.Common;
 using WPF.DependencyInjection.IServices;
 using WPF.DependencyInjection.Models;
 
@@ -13,9 +14,13 @@ namespace WPF.DependencyInjection.ViewModels
     public class CustomersViewModel : ViewModelBase
     {
         private readonly ICustomersService customersService;
+        private readonly IFrameNavigationService navigationService;
 
-        public CustomersViewModel(ICustomersService customersService)
+        public Customer SelectedCustomer { get; set; }
+
+        public CustomersViewModel(IFrameNavigationService navigationService, ICustomersService customersService)
         {
+            this.navigationService = navigationService;
             this.customersService = customersService;
 
         }
@@ -40,5 +45,9 @@ namespace WPF.DependencyInjection.ViewModels
 
             }
         }
+
+        private ICommand _ShowPage1Command;
+
+        public ICommand ShowPage1Command => _ShowPage1Command ?? (_ShowPage1Command = new RelayCommand(p => navigationService.Navigate("Page1", SelectedCustomer)));
     }
 }
