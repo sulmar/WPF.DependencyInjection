@@ -27,9 +27,9 @@ namespace WPF.DependencyInjection.ViewModels
 
         public ViewModelLocator()
         {
-            UseUnity();
+            // UseUnity();
 
-            // UseAutoFac();
+            UseAutoFac();
 
         }
 
@@ -38,7 +38,7 @@ namespace WPF.DependencyInjection.ViewModels
             var container = new UnityContainer();
             container.RegisterType<CustomersViewModel>(_mainWindowLifetimeManager);
             container.RegisterType<ICustomersService, CustomersService>();
-            container.RegisterType<IFrameNavigationService, FrameNavigationService>();
+            container.RegisterSingleton<IFrameNavigationService, FrameNavigationService>();
 
             // Set the service locator to an UnityServiceLocator.
             ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
@@ -53,7 +53,7 @@ namespace WPF.DependencyInjection.ViewModels
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<FrameNavigationService>().As<IFrameNavigationService>();
+            builder.RegisterType<FrameNavigationService>().As<IFrameNavigationService>().SingleInstance();
             builder.RegisterType<CustomersService>().As<ICustomersService>();
 
             builder.RegisterType<ShellViewModel>();

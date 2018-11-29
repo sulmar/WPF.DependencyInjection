@@ -20,6 +20,6 @@ namespace WPF.DependencyInjection.ViewModels
 
         private ICommand _loadedCommand;
 
-        public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(p => navigationService.Navigate("Page1")));
+        public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(p => navigationService.Navigate("Page1", "Hello World")));
     }
 }

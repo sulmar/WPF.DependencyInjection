@@ -11,13 +11,7 @@ namespace WPF.DependencyInjection.Common
 {
     public class FrameNavigationService : IFrameNavigationService
     {
-        public object Parameter { get; private set; }
-
-        public FrameNavigationService()
-        {
-           
-
-        }
+        public object Parameter { get; private set; }       
 
         public void GoBack()
         {
@@ -38,6 +32,8 @@ namespace WPF.DependencyInjection.Common
             Frame frame = GetFrame();
 
             var uri = new Uri($"../Views/{page}View.xaml", UriKind.Relative);
+
+            this.Parameter = parameter;
 
             frame.Navigate(uri, parameter);
         }
@@ -72,36 +68,6 @@ namespace WPF.DependencyInjection.Common
         }
 
 
-        private static FrameworkElement GetDescendantFromName(DependencyObject parent, string name)
-        {
-            var count = VisualTreeHelper.GetChildrenCount(parent);
-
-            if (count < 1)
-            {
-                return null;
-            }
-
-            for (var i = 0; i < count; i++)
-            {
-                var frameworkElement = VisualTreeHelper.GetChild(parent, i) as FrameworkElement;
-                if (frameworkElement != null)
-                {
-                    if (frameworkElement.Name == name)
-                    {
-                        return frameworkElement;
-                    }
-
-                    frameworkElement = GetDescendantFromName(frameworkElement, name);
-                    if (frameworkElement != null)
-                    {
-                        return frameworkElement;
-                    }
-                }
-            }
-            return null;
-        }
-
-
-
+      
     }
 }
