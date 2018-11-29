@@ -8,7 +8,8 @@
 
 - Bogus 
 - Unity Container [https://msdn.microsoft.com/en-us/library/ff647202.aspx]
-- CommonServiceLocator
+- AutoFac [https://autofac.org/]
+- CommonServiceLocator [https://github.com/unitycontainer/commonservicelocator]
 - System.Windows.Interactivity.WPF
 
 
