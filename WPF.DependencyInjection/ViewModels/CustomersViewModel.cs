@@ -8,7 +8,7 @@ using WPF.DependencyInjection.Models;
 
 namespace WPF.DependencyInjection.ViewModels
 {
-    public class CustomersViewModel
+    public class CustomersViewModel : ViewModelBase
     {
         private readonly ICustomersService customersService;
 

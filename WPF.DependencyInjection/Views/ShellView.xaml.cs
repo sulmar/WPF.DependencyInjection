@@ -11,23 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Unity.Attributes;
-using WPF.DependencyInjection.ViewModels;
 
 namespace WPF.DependencyInjection.Views
 {
     /// <summary>
-    /// Interaction logic for CustomersView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class CustomersView : Page
+    public partial class ShellView : Window
     {
-        [Dependency]
-        public CustomersViewModel ViewModel
-        {
-            set { DataContext = value; }
-        }
-
-        public CustomersView()
+        public ShellView()
         {
             InitializeComponent();
         }

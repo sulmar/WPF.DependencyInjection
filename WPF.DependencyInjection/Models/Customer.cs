@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF.DependencyInjection.Models
 {
-    public class Customer
+    public class Customer : Base
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

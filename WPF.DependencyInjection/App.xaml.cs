@@ -19,22 +19,22 @@ namespace WPF.DependencyInjection
     public partial class App : Application
     {
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            IUnityContainer container = new UnityContainer();
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    IUnityContainer container = new UnityContainer();
 
-            container.RegisterType<ICustomersService, CustomersService>();
+        //    container.RegisterType<ICustomersService, CustomersService>();
 
-            //container.RegisterTypes(
-            //   AllClasses.FromLoadedAssemblies(),
-            //   WithMappings.FromMatchingInterface,
-            //   WithName.Default);
+        //    //container.RegisterTypes(
+        //    //   AllClasses.FromLoadedAssemblies(),
+        //    //   WithMappings.FromMatchingInterface,
+        //    //   WithName.Default);
 
-            var view = container.Resolve<CustomersView>();
+        //    var view = container.Resolve<CustomersView>();
 
            
 
-            view.Show();
-        }
+        //    view.Show();
+        //}
     }
 }
