@@ -10,17 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Unity.Attributes;
+using WPF.DependencyInjection.ViewModels;
 
-namespace WPF.DependencyInjection
+namespace WPF.DependencyInjection.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CustomersView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CustomersView : Window
     {
-        public MainWindow()
+        [Dependency]
+        public CustomersViewModel ViewModel
+        {
+            set { DataContext = value; }
+        }
+
+        public CustomersView()
         {
             InitializeComponent();
         }
