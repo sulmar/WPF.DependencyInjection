@@ -1,4 +1,4 @@
-# Wstrzykiwanie zaleønoúci w aplikacji WPF MVVM
+# Wstrzykiwanie zale≈ºno≈õci w aplikacji WPF MVVM
 
 # Biblioteki 
 
